@@ -66,11 +66,9 @@
 <!--                    ELEMENT DECLARATIONS                       -->
 <!-- ============================================================= -->
 
-<!ENTITY % learningDomain-topicref-atts-no-chunk
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+<!-- Omits @chunk and @collection-type -->
+<!ENTITY % learningMapDomain-topicref-atts-base 
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -79,11 +77,16 @@
                keys
                           CDATA
                                     #IMPLIED
-               keyscope
+               type
                           CDATA
                                     #IMPLIED
                cascade
                           CDATA
+                                    #IMPLIED
+               processing-role
+                          (normal |
+                           resource-only |
+                           -dita-use-conref-target)
                                     #IMPLIED
                scope
                           (external |
@@ -91,27 +94,55 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               processing-role
-                          (normal |
-                           resource-only |
-                           -dita-use-conref-target)
+               format
+                          CDATA
                                     #IMPLIED
                linking
-                          (targetonly |
-                           sourceonly |
+                          (none |
                            normal |
-                           none |
+                           sourceonly |
+                           targetonly |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               toc
+                          (no |
+                           yes |
                            -dita-use-conref-target)
                                     #IMPLIED
                search
-                          (yes |
-                           no |
+                          (no |
+                           yes |
                            -dita-use-conref-target)
                                     #IMPLIED
+               keyscope
+                          CDATA
+                                    #IMPLIED
+               subjectrefs
+                          CDATA
+                                    #IMPLIED
+               %impose-role-attribute;
                %univ-atts;"
 >
-<!ENTITY % learningObjectComponent-topicref-atts
-              "%learningDomain-topicref-atts-no-chunk;
+<!ENTITY % learningMapDomain-topicref-atts-no-chunk
+              "%learningMapDomain-topicref-atts-base;
+               collection-type
+                          (choice |
+                           family |
+                           sequence |
+                           unordered |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+              "
+>
+<!ENTITY % learningMapDomain-topicref-atts-no-collection-type
+              "%learningMapDomain-topicref-atts-base;
+               chunk
+                          CDATA
+                                    #IMPLIED
+              "
+>
+<!ENTITY % learningMapDomain-topicref-atts
+              "%learningMapDomain-topicref-atts-no-chunk;
                chunk
                           CDATA
                                     'to-content'"
@@ -130,7 +161,7 @@
                           %learningSummaryRef;)*)"
 >
 <!ENTITY % learningGroup.attributes
-              "%topicref-atts;
+              "%learningMapDomain-topicref-atts-no-collection-type;
                collection-type
                           (choice |
                            unordered |
@@ -155,7 +186,7 @@
                           %learningSummaryRef;)*)"
 >
 <!ENTITY % learningObject.attributes
-              "%topicref-atts;
+              "%learningMapDomain-topicref-atts-no-collection-type;
                collection-type
                           (choice |
                            unordered |
@@ -174,7 +205,7 @@
                        "(%topicmeta;)?"
 >
 <!ENTITY % learningPlanRef.attributes
-              "%topicref-atts;
+              "%learningMapDomain-topicref-atts;
                "
 >
 <!ELEMENT  learningPlanRef %learningPlanRef.content;>
@@ -186,7 +217,7 @@
                        "(%topicmeta;)?"
 >
 <!ENTITY % learningOverviewRef.attributes
-              "%topicref-atts;
+              "%learningMapDomain-topicref-atts;
                "
 >
 <!ELEMENT  learningOverviewRef %learningOverviewRef.content;>
@@ -198,7 +229,7 @@
                        "(%topicmeta;)?"
 >
 <!ENTITY % learningSummaryRef.attributes
-              "%topicref-atts;
+              "%learningMapDomain-topicref-atts;
               "
 >
 <!ELEMENT  learningSummaryRef %learningSummaryRef.content;>
@@ -211,7 +242,7 @@
                          (%learningContentComponentRef;)*)"
 >
 <!ENTITY % learningContentRef.attributes
-              "%topicref-atts;
+              "%learningMapDomain-topicref-atts;
               "
 >
 <!ELEMENT  learningContentRef %learningContentRef.content;>
@@ -224,7 +255,7 @@
                          (%learningContentComponentRef;)*)"
 >
 <!ENTITY % learningContentComponentRef.attributes
-              "%topicref-atts;
+              "%learningMapDomain-topicref-atts;
               "
 >
 <!ELEMENT  learningContentComponentRef %learningContentComponentRef.content;>
@@ -236,7 +267,7 @@
                        "(%topicmeta;)?"
 >
 <!ENTITY % learningPreAssessmentRef.attributes
-              "%topicref-atts;
+              "%learningMapDomain-topicref-atts;
                "
 >
 <!ELEMENT  learningPreAssessmentRef %learningPreAssessmentRef.content;>
@@ -248,7 +279,7 @@
                        "(%topicmeta;)?"
 >
 <!ENTITY % learningPostAssessmentRef.attributes
-              "%topicref-atts;
+              "%learningMapDomain-topicref-atts;
               "
 >
 <!ELEMENT  learningPostAssessmentRef %learningPostAssessmentRef.content;>
@@ -261,7 +292,7 @@
                          (%data.elements.incl;)*)"
 >
 <!ENTITY % learningGroupMapRef.attributes
-              "%mapref.attributes;"
+              "%learningMapDomain-topicref-atts;"
 >
 <!ELEMENT  learningGroupMapRef %learningGroupMapRef.content;>
 <!ATTLIST  learningGroupMapRef %learningGroupMapRef.attributes;>
@@ -273,7 +304,7 @@
                          (%data.elements.incl;)*)"
 >
 <!ENTITY % learningObjectMapRef.attributes
-              "%mapref.attributes;"
+              "%learningMapDomain-topicref-atts;"
 >
 <!ELEMENT  learningObjectMapRef %learningObjectMapRef.content;>
 <!ATTLIST  learningObjectMapRef %learningObjectMapRef.attributes;>

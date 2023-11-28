@@ -6,7 +6,15 @@
     
   </bookmeta>
   <frontmatter></frontmatter>
-  <part></part>
+  <part>
+    <learningObject>
+      <learningContentRef href="test-learningOverview-2-0.dita"/>
+      <learningContentRef href="test-learningPlan-2-0.dita"/>
+      <learningContentRef href="test-learningContent-2-0.dita"/>
+      <learningContentRef href="test-learningSummary-2-0.dita"/>
+      <learningContentRef href="test-assessment-2-0.dita"/>
+    </learningObject>
+  </part>
   <appendices>
     <appendix></appendix>
   </appendices>

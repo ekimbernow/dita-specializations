@@ -6,5 +6,9 @@
   <prolog>
     <titlealt title-role="navtitle"></titlealt>
   </prolog>
-  <learningContentbody></learningContentbody>
+  <learningContentbody>
+    <lcIntro id="lcIntro_ydb_gk2_pzb">
+      <p>Introduction.</p>
+    </lcIntro>
+  </learningContentbody>
 </learningContent>
